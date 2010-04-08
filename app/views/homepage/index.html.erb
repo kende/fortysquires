@@ -1,4 +1,26 @@
 <% content_for :content do %>
-foo bar
+  <h2>It's <%= link_to "foursquare", "http://foursquare.com" %> in your browser!</h2>
+  <div>
+    <%= link_to "I", "http://www.iseff.com" %> built a no-frills version of <em>foursquare</em> you can use straight from your browser. 
+ </div>
+  <br />
+  <div>
+    Why should you use this?
+    <ol>
+      <li>You don't have a device with a native <em>foursquare</em> app.</li>
+      <li>Your native app is buggy and crashes.</li>
+      <li>You only want the core <em>foursquare</em> features: checking in, searching, and viewing your history.</li>
+      <li>You like the web.</li>
+    </ol>
+ </div>
 
+  <div>
+    Fun facts:
+    <ol>
+      <li><span style="font-weight: bold;">Cost:</span> $0.99, from <%= link_to "AppStoreHQ", "http://www.appstorehq.com" %>.</li>
+      <li>Built using <span style="font-weight: bold;"><%= link_to "HTML5", "http://www.mobilehtml5.com" %></span>.</li>
+      <li>Runs on <span style="font-weight: bold;">Rails 3</span>.</li>
+      <li>Is <span style="font-weight: bold;">open-source</span> and available at <%= link_to "GitHub", "http://github.com/iseff/fortysquires" %>.</li>
+    </ol>
+  </div>
 <% end %>

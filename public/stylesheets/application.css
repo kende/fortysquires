@@ -10,7 +10,7 @@ body {
   background-color: #2398C9;
   margin-top: 0;
   padding-top: 15px;
-  height: 50px;
+  height: 70px;
   text-align: center;
   margin-bottom: 15px;
 }
@@ -21,7 +21,32 @@ body {
   color: #fff;
 }
 
+#header-logo a { 
+  color: #fff;
+  text-decoration: none;
+}
+
+#header-nav { 
+  font-size: 13px;
+  color: #fff;
+}
+
+#header-nav a { 
+  color: #fff;
+}
+
 #content-wrapper { 
+}
+
+#footer-wrapper {
+  border-top: 1px solid #000;
+  margin-top: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  background-color: #9BD5ED;
+  font-size: 12px;
+  color: #444;
 }
 
 ul { 

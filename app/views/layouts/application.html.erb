@@ -16,7 +16,18 @@
   <body>
     <!-- header -->
     <div id="header-wrapper">
-      <span id="header-logo">fortysquires</span>
+      <span id="header-logo"><%= link_to "fortysquires", root_path %></span>
+      <br />
+      <span id="header-nav">
+        <% if @current_user %>
+          <%= link_to "Checkin", checkin_path %>
+          | <%= link_to "Your history", history_path %>
+          | <%= link_to "Logout", "" %>
+        <% else %>
+          <%= link_to "Purchase", "http://www.appstorehq.com" %>
+          | <%= link_to "Login", "" %>
+        <% end %>
+      </span>
    </div>
     <!-- content -->
     <div id="content-wrapper">
@@ -26,7 +37,7 @@
 
     <!-- footer -->
     <div id="footer-wrapper">
-
+      fortysquires. Made by <%= link_to "Ian Sefferman", "http://www.iseff.com" %>. Sold by <%= link_to "AppStoreHQ", "http://www.appstorehq.com" %>. Open-sourced at <%= link_to "GitHub", "http://github.com/iseff/fortysquires" %>.
     </div>
   </body>
 </html>

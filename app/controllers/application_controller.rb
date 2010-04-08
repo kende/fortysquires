@@ -3,8 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :current_user
   def current_user
-# TODO:    @current_user ||= User.find_by_remember_token(cookies[:remember_token])
-    @current_user = User.first
+    # TODO: make sessions actually work!
+    if params[:logged_out]
+      @current_user = nil
+    else
+      @current_user = User.first
+    end
+    @current_user
   end
 
 
