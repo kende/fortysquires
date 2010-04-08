@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title><%= @title || "HTML5 Foursquare" %> - fortysquires.com</title>
+    <script src="http://www.google.com/jsapi"></script>
+    <script>
+      google.load("jquery", "1.4.1");
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/> 
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= yield :head %>
+  </head>
+
+  <body>
+    <!-- header -->
+    <div id="header-wrapper">
+      <span id="header-logo">fortysquires</span>
+   </div>
+    <!-- content -->
+    <div id="content-wrapper">
+      <%= render :partial => "layouts/flashes" %>
+      <%= yield :content %>
+    </div>
+
+    <!-- footer -->
+    <div id="footer-wrapper">
+
+    </div>
+  </body>
+</html>

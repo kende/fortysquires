@@ -1,0 +1,4 @@
+<% content_for :content do %>
+  <h2>Your Checkin History</h2>
+  <%= render :partial => "venues/list", :locals => { :venues => @history.map { |c| c.venue } } %>
+<% end %>

@@ -1,0 +1,26 @@
+<% content_for :head do %>
+  <script>
+    $('document').ready(function() {
+      navigator.geolocation.getCurrentPosition(
+        function(pos) {
+          lat  = pos.coords.latitude;
+          long = pos.coords.longitude;
+          $.get('/checkin/nearby_venues?lat=' + lat + '&long=' + long,
+                   '',
+                   function(data, status, req) {
+                     $('#venues').html(data);
+                 }
+          );   
+       }
+     );
+   });
+  </script>
+<% end %>
+
+<% content_for :content do %>
+  <%= render :partial => "layouts/venue_search" %>
+
+  <div id="venues">
+    Retrieving nearby venues... 
+  </div>
+<% end %>

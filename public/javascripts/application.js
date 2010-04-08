@@ -1,2 +1,15 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+    $('document').ready(function() {
+      navigator.geolocation.getCurrentPosition(
+        function(pos) {
+          lat  = pos.coords.latitude;
+          long = pos.coords.longitude;
+	  if ($('#venue_search_lat').length) {
+	    $('#venue_search_lat').val(lat);
+	  }
+
+	  if ($('#venue_search_long').length) {
+	    $('#venue_search_long').val(long);
+	  }
+       }
+     );
+   });

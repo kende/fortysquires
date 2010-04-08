@@ -1,0 +1,11 @@
+<%
+  q ||= @q
+%>
+
+<div id="search-venue-form-wrapper">
+  <%= form_tag venue_search_path, :method => :get do %>
+    <input type="text" name="q" placeholder="Search venues..." value="<%= q %>" />
+    <input type="hidden" name="lat" id="venue_search_lat" value="" />
+    <input type="hidden" name="long" id="venue_search_long" value="" />
+  <% end %>
+</div>

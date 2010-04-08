@@ -1,0 +1,92 @@
+body { 
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, sans-serif;
+}
+
+#header-wrapper { 
+  border-bottom: 1px solid #000;
+  background-color: #2398C9;
+  margin-top: 0;
+  padding-top: 15px;
+  height: 50px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#header-logo { 
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+}
+
+#content-wrapper { 
+}
+
+ul { 
+  width: 100%;
+  padding: 0;
+  border-top: 1px solid #333;
+}
+
+ul li { 
+  list-style: none;
+  padding: 15px;
+  border-bottom: 1px solid #333;
+}
+
+ul li a { 
+  text-decoration: none;
+  color: #000;
+}
+
+.list-link { 
+  display: block;
+  padding: 0;
+  border: 0;
+}
+
+.list-a { 
+  background-color: #ddd;
+}
+
+.list-b { 
+  background-color: #bbb;
+}
+
+.small-light { 
+  font-size: 11px;
+  color: #555;
+}
+
+#search-venue-form-wrapper { 
+  text-align: center;
+}
+#search-venue-form-wrapper input { 
+  width: 90%;
+  height: 30px;
+  font-size: 20px;
+}
+
+.notice { 
+  background-color: #ffff99;
+  padding: 10px;
+  width: 90%;
+}
+
+.warning { 
+  background-color: #ffcc00;
+  padding: 10px;
+  width: 90%;
+}
+
+.error { 
+  background-color: #ff3300;
+  padding: 10px;
+  width: 90%;
+}
+
+#flash-wrapper { 
+  text-align: center;
+}

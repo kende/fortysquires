@@ -1,0 +1,4 @@
+<% @venues["groups"].each do |group| %>
+  <h2><%= group["type"] %></h2>
+  <%= render :partial => "venues/list", :locals => { :venues => group["venues"] } %>
+<% end %>

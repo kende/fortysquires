@@ -1,0 +1,9 @@
+<% content_for :content do %>
+  <%= render :partial => "layouts/venue_search" %>
+
+  <div id="venues">
+    <h2>Search Results for <%= @q %></h2>
+    <%= render :partial => "venues/list", :locals => { :venues => @venues } %>
+  </div>
+<% end %>
+

@@ -1,0 +1,27 @@
+<ul>
+  <% list_classes = ["list-a", "list-b"] %>
+  <% i = 0 %>
+  <% venues.each do |venue| %>
+    <% i += 1 %>
+    <li class="<%= list_classes[i % list_classes.size] %>">
+      <a href="<%= perform_checkin_path(:vid => venue["id"]) %>" class="list-link">
+	<%= venue["name"] %><br />
+	<span class="small-light">
+	  <% unless venue["address"].blank? %>
+	    <%= venue["address"] %>,
+	  <% end %>
+	  <% unless venue["city"].blank? %>
+	    <%= venue["city"] %>, 
+	  <% end %>
+	  <% unless venue["state"].blank? %>
+	    <%= venue["state"] %>
+	  <% end %>
+	  
+	  <% unless venue["stats"].andand["herenow"].blank? %>
+	    (<%= venue["stats"]["herenow"] %> <%= venue["stats"]["herenow"].to_i == 1 ? "person" : "people" %> here now)
+	  <% end %>
+	</span>
+      </a>
+    </li>
+  <% end %>
+</ul>

@@ -1,18 +1,23 @@
 Fortysquires::Application.routes.draw do |map|
+  get "venues/search"
+
+  get "homepage/index"
+
+  get "history/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+  match '/users/oauth/authorize' => "users#oauth_authorize", :as => :oauth_authorize
+  match '/users/oauth/callback' => "users#oauth_callback", :as => :oauth_callback
 
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+  match '/history' => "history#index", :as => :history
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  match '/checkin' => "checkin#index", :as => :checkin
+  match '/checkin/nearby_venues' => "checkin#nearby_venues", :as => :nearby_venues
+  match '/checkin/perform' => 'checkin#perform', :as => :perform_checkin
 
+  match '/venues/search' => "venues#search", :as => :venue_search
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -46,13 +51,7 @@ Fortysquires::Application.routes.draw do |map|
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  root :to => "homepage#index"
 
   # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
 end
