@@ -22,10 +22,10 @@
         <% if @current_user %>
           <%= link_to "Checkin", checkin_path %>
           | <%= link_to "Your history", history_path %>
-          | <%= link_to "Logout", "" %>
+          | <%= link_to "Logout", logout_path %>
         <% else %>
           <%= link_to "Purchase", "http://www.appstorehq.com" %>
-          | <%= link_to "Login", "" %>
+          | <%= link_to "Login", login_path %>
         <% end %>
       </span>
    </div>

@@ -8,13 +8,14 @@ class UsersController < ApplicationController
   end
 
   def oauth_callback
-    at, as = oauth.authorize_from_request(session[:request_token], session[:request_secret], params[:oauth_token])
+    @user = User.new_from_access_token(*oauth.authorize_from_request(session[:request_token], session[:request_secret], params[:oauth_token]))
+    puts "!!!!! @user: #{@user.inspect}"
 
-    @user = User.new(:access_token => at, :access_secret => as)
     if @user.save
-      session[:user] = @user
+      set_current_user(@user)
+      puts "current_user: #{current_user.inspect}"
       flash[:notice] = "w00t. You're fortysquiring! Enjoy."
-      redirect_to history_path
+      redirect_to checkin_path
     else
       flash[:error] = "Sorry, we were unable to authenticate you with Foursquare. Please try again."
       redirect_to signup_path

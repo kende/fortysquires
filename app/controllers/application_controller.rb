@@ -3,18 +3,35 @@ class ApplicationController < ActionController::Base
 
   before_filter :current_user
   def current_user
-    # TODO: make sessions actually work!
-    if params[:logged_out]
-      @current_user = nil
-    else
-      @current_user = User.first
-    end
-    @current_user
+    return @current_user if @current_user
+    return nil if cookies[:remember_token].blank?
+    @current_user = User.find_by_remember_token(cookies[:remember_token])
+  end
+
+  # call this method if you want to log someone in
+  def set_current_user(user)
+    sha1 = Digest::SHA1.hexdigest(user.id.to_s + Time.now.to_i.to_s)
+    puts "sha1: #{sha1.inspect}"
+    cookies[:remember_token] = sha1
+    user.remember_token = sha1
+    user.save
+    @current_user = user
+  end
+
+  # call this if you want to log someone out
+  def unset_current_user
+    current_user.remember_token = nil
+    cookies[:remember_token] = nil
+    current_user.save
   end
 
 
   def logged_in?
+    # first we make sure we have a user from the remember_token
     redirect_to(login_path) if current_user.nil?
+
+    # TODO: next we ensure this user has actually purchased
+    
   end
 
 end

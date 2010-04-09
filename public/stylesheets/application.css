@@ -97,21 +97,21 @@ ul li a {
 .notice { 
   background-color: #ffff99;
   padding: 10px;
-  width: 90%;
 }
 
 .warning { 
   background-color: #ffcc00;
   padding: 10px;
-  width: 90%;
 }
 
 .error { 
   background-color: #ff3300;
   padding: 10px;
-  width: 90%;
 }
 
 #flash-wrapper { 
-  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 15px;
+  margin-bottom: 15px;                 
 }

@@ -1,4 +1,10 @@
 Fortysquires::Application.routes.draw do |map|
+  get "sessions/new"
+
+  get "sessions/create"
+
+  get "sessions/logout"
+
   get "venues/search"
 
   get "homepage/index"
@@ -10,6 +16,9 @@ Fortysquires::Application.routes.draw do |map|
 
   match '/users/oauth/authorize' => "users#oauth_authorize", :as => :oauth_authorize
   match '/users/oauth/callback' => "users#oauth_callback", :as => :oauth_callback
+
+  match '/login' => "sessions#new", :as => :login
+  match '/logout' => "sessions#logout", :as => :logout
 
   match '/history' => "history#index", :as => :history
 
