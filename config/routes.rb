@@ -17,6 +17,9 @@ Fortysquires::Application.routes.draw do |map|
   match '/users/oauth/authorize' => "users#oauth_authorize", :as => :oauth_authorize
   match '/users/oauth/callback' => "users#oauth_callback", :as => :oauth_callback
 
+  match '/purchase' => "purchase_tokens#purchase", :as => :purchase
+  match '/purchase/callback' => "purchase_tokens#callback", :as => :purchase_callback
+
   match '/login' => "sessions#new", :as => :login
   match '/logout' => "sessions#logout", :as => :logout
 

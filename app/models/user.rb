@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   validates_presence_of :foursquare_id
   validates_uniqueness_of :foursquare_id
 
+  has_one :purchase_token
+
   def foursquare
     return @foursquare if @foursquare
     oauth = Foursquare::OAuth.new(OAUTH_KEY, OAUTH_SECRET)

@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   # call this method if you want to log someone in
   def set_current_user(user)
     sha1 = Digest::SHA1.hexdigest(user.id.to_s + Time.now.to_i.to_s)
-    puts "sha1: #{sha1.inspect}"
     cookies[:remember_token] = sha1
     user.remember_token = sha1
     user.save
@@ -27,11 +26,11 @@ class ApplicationController < ActionController::Base
 
 
   def logged_in?
-    # first we make sure we have a user from the remember_token
+    # make sure we have a user from the remember_token 
     redirect_to(login_path) if current_user.nil?
 
-    # TODO: next we ensure this user has actually purchased
-    
+    # ensure this user has actually purchased
+    redirect_to(purchase_path) if current_user.purchase_token.nil?
   end
 
 end
