@@ -19,20 +19,19 @@ class ApplicationController < ActionController::Base
 
   # call this if you want to log someone out
   def unset_current_user
-    current_user.remember_token = nil
+    unless current_user.nil?
+      current_user.remember_token = nil
+      current_user.save
+    end
     cookies[:remember_token] = nil
-    current_user.save
   end
 
 
   def logged_in?
-    u = current_user
-
-    # make sure we have a user from the remember_token 
-    redirect_to(login_path) and return if u.nil?
+    redirect_to(login_path) and return if current_user.nil?
 
     # ensure this user has actually purchased
-    redirect_to(purchase_path) and return if u.purchase_token.nil?
+    redirect_to(purchase_path) and return if current_user.purchase_token.nil?
   end
 
 end
