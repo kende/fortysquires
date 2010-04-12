@@ -9,11 +9,11 @@ class UsersController < ApplicationController
 
   def oauth_callback
     begin
-      puts "request_token: #{session[:request_token].inspect}, secret: #{session[:request_secret].inspect}, token: #{params[:oauth_token].inspect}"
+      logger.info "request_token: #{session[:request_token].inspect}, secret: #{session[:request_secret].inspect}, token: #{params[:oauth_token].inspect}"
       @user = User.new_from_access_token(*oauth.authorize_from_request(session[:request_token], session[:request_secret], params[:oauth_token]))
     rescue
       flash[:error] = "Sorry, we were unable to authenticate you with Foursquare. Please try again."
-      redirect_to(signup_path) and return
+      redirect_to(login_path) and return
     end
 
     if @user.save
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
       end
     else
       flash[:error] = "Sorry, we were unable to authenticate you with Foursquare. Please try again."
-      redirect_to(signup_path) and return
+      redirect_to(login_path) and return
     end
   end
 
