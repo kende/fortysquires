@@ -19,9 +19,11 @@ class ApplicationController < ActionController::Base
 
   # call this if you want to log someone out
   def unset_current_user
-    current_user.remember_token = nil
+    unless current_user.nil?
+      current_user.remember_token = nil
+      current_user.save
+    end
     cookies[:remember_token] = nil
-    current_user.save
   end
 
 
