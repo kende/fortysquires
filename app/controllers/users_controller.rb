@@ -23,7 +23,7 @@ class UsersController < ApplicationController
           flash[:notice] = "Great! Step 1 of 2 complete. Now you just need to purchase the app (it only costs $0.99)."
           redirect_to(purchase_path) and return
         else
-          token = PurchaseToken.new(:purchase_token => cookies[:purchase_token], :user_id => @user.id)
+          token = PurchaseToken.new(:token => cookies[:purchase_token], :user_id => @user.id)
           if token.save
             flash[:notice] = "Awesome, you've logged in and purchased. Now check in!"
             redirect_to(checkin_path) and return
