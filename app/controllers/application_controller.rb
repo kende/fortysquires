@@ -26,11 +26,13 @@ class ApplicationController < ActionController::Base
 
 
   def logged_in?
+    u = current_user
+
     # make sure we have a user from the remember_token 
-    redirect_to(login_path) if current_user.nil?
+    redirect_to(login_path) and return if u.nil?
 
     # ensure this user has actually purchased
-    redirect_to(purchase_path) if current_user.purchase_token.nil?
+    redirect_to(purchase_path) and return if u.purchase_token.nil?
   end
 
 end
