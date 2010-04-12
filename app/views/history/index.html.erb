@@ -1,4 +1,10 @@
 <% content_for :content do %>
   <h2>Your Checkin History</h2>
+
+  <div class="small-light" style="margin-top: 15px;">
+    Tap to checkin again at any of these locations.
+  </div>
+
+
   <%= render :partial => "venues/list", :locals => { :venues => @history.map { |c| c.venue } } %>
 <% end %>
