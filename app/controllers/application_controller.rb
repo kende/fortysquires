@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   # call this method if you want to log someone in
   def set_current_user(user)
     sha1 = Digest::SHA1.hexdigest(user.id.to_s + Time.now.to_i.to_s)
-    cookies[:remember_token] = sha1
+    cookies[:remember_token] = { :value => sha1, :expires => 3.years.from_now }
     user.remember_token = sha1
     user.save
     @current_user = user
