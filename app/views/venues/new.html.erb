@@ -1,0 +1,52 @@
+<% content_for :head do %>
+  <script>
+    $('document').ready(function() {
+      navigator.geolocation.getCurrentPosition(
+        function(pos) {
+          lat  = pos.coords.latitude;
+          long = pos.coords.longitude;
+          $("#add_venue_geolat").val(lat);
+          $("#add_venue_geolong").val(long);
+      }
+     );
+   });
+  </script>
+<% end %>
+
+<% content_for :content do %>
+  <div id="add-venue-form-wrapper">
+    <% form_for :venue, :url => create_venue_path do |f| %>
+      <%= f.hidden_field :geolat, :id => "add_venue_geolat" %>
+      <%= f.hidden_field :geolong, :id => "add_venue_geolong" %>
+      <ul>
+	<li class="list-a">
+	  <%= f.text_field :name, :placeholder => "Name" %>
+	</li>
+
+	<li class="list-b">
+	  <%= f.text_field :address, :placeholder => "Address" %>
+	</li>
+
+	<li class="list-a">
+	  <%= f.text_field :crossstreet, :placeholder => "Cross streets" %>
+	</li>
+
+	<li class="list-b">
+	  <%= f.text_field :city, :placeholder => "City" %>	  
+	</li>
+
+	<li class="list-a">
+	  <%= f.text_field :state, :placeholder => "State" %>	  
+	</li>
+
+	<li class="list-b">
+	  <%= f.text_field :zip, :placeholder => "Zip" %>	  
+	</li>
+
+	<li class="list-a">
+	  <%= f.submit "Add venue" %>
+	</li>
+     </ul>
+    <% end %>
+  </div>
+<% end %>
