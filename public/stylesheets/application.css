@@ -94,6 +94,12 @@ ul li a {
   font-size: 20px;
 }
 
+#add-venue-form-wrapper input { 
+  width: 90%;
+  height: 30px;
+  font-size: 20px;
+}
+
 .notice { 
   background-color: #ffff99;
   padding: 10px;

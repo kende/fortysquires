@@ -30,6 +30,9 @@ Fortysquires::Application.routes.draw do |map|
   match '/checkin/perform' => 'checkin#perform', :as => :perform_checkin
 
   match '/venues/search' => "venues#search", :as => :venue_search
+  match '/venues/new' => "venues#new", :as => :new_venue
+  match '/venues/create' => "venues#create", :as => :create_venue
+
   # Sample resource route with options:
   #   resources :products do
   #     member do
